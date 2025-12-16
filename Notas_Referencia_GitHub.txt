@@ -1,0 +1,1 @@
+Todo el código fuente utilizado para el análisis y la modelización del proyecto BilingualMind se encuentra disponible y versionado públicamente en el siguiente repositorio de GitHub: https://github.com/gemmapolo21-code/TFM-BilingualMind.git

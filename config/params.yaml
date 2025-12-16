@@ -1,0 +1,16 @@
+# config/params.yaml - Configuración central del proyecto
+paths:
+  raw_data: "data/01_raw/"        # Tus datos originales de neuroimagen
+  processed_data: "data/03_processed/" # Datos listos para el modelo
+  reports: "reports/figures/"          # Donde se guardarán los gráficos
+
+preprocessing:
+  target_variable: "diagnosis"    # ¿Qué quieres predecir? (ej: bilingüe/monolingüe)
+  test_size: 0.2                  # Porcentaje para validación
+  random_seed: 42                 # Para que tus resultados sean reproducibles
+
+model:
+  name: "logistic_regression"     # Empieza con algo simple
+  param_grid:                     # Hiperparámetros a probar
+    C: [0.1, 1, 10]
+    max_iter: [500]
