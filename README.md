@@ -1,11 +1,12 @@
 
+># TFM-BilingualMind: Modelización Predictiva del Impacto del Bilingüismo en el Desarrollo Cognitivo y las Proyecciones Laborales con Técnicas de Machine Learning
 
-#  TFM-BilingualMind:Modelización Predictiva del Impacto del Bilingüismo en el Desarrollo Cognitivo y las Proyecciones Laborales con Técnicas de Machine Learning
-
-**Autor:** [Gema Dominguez Polo]  
-**Tutor:** [Juan Manuel Moreno Lamparero]  
-**Máster:** Máster Data Science and business analytics - IMF  
+**Autor:** [Gema Dominguez Polo] 
+**Tutor:** [Juan Manuel Moreno Lamparero] 
+**Máster:** Máster Data Science and business analytics - IMF 
 **Fecha:** [Diciembre, 2025]
+
+---
 
 ## 📋 Resumen Ejecutivo
 Este Trabajo Fin de Máster (TFM) implementa un pipeline completo de análisis de datos de neuroimagen para investigar diferencias cerebrales entre individuos monolingües y bilingües. Combina técnicas de procesamiento de imágenes médicas (NIfTI), extracción de características, modelado con Machine Learning y visualización interactiva.
@@ -25,7 +26,7 @@ Este Trabajo Fin de Máster (TFM) implementa un pipeline completo de análisis d
 graph TB
     A[Datasets Públicos<br>OASIS/ADNI] --> B[data/01_raw/];
     B --> C[Preprocesamiento<br>src/data/];
-    C --> D[Extracción de<br>Características];
+    C --> D[Extracción de<br>Características<br>src/features/];
     D --> E[Modelado ML<br>src/models/];
     E --> F{Evaluación};
     F --> G[Resultados<br>reports/];
