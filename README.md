@@ -34,14 +34,7 @@ Se concluye que el bilingüismo implica una ventaja sutil y robusta a nivel neur
 
 Palabras clave: Bilingüismo, ESCS, Machine Learning, XGBoost, SHAP, Función Ejecutiva, Neuroimagen, PISA, Modelización Predictiva.
 
-## 🎯 Objetivos
-- **Objetivo General:** Desarrollar un sistema de análisis que identifique patrones en neuroimagen asociados al bilingüismo.
-- **Objetivos Específicos:**
-  1. Implementar un pipeline reproducible de preprocesamiento de imágenes MRI.
-  2. Extraer características volumétricas y morfométricas de regiones cerebrales.
-  3. Evaluar modelos de clasificación para distinguir entre grupos.
-  4. Desplegar un dashboard interactivo para visualización de resultados.
-  5. Documentar todo el proceso para garantizar reproducibilidad.
+
 
 ## 🏗️ Arquitectura del Proyecto
 
