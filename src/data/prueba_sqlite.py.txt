@@ -1,0 +1,35 @@
+# prueba_sqlite.py
+import sqlite3
+import pandas as pd
+
+print("🎯 Iniciando prueba de SQLite con Python 3.11.9...")
+
+# SQLite viene INCLUIDO con Python - no necesitas instalar nada
+conn = sqlite3.connect('bilingualmind.db')
+
+print("✅ Conectado a la base de datos")
+
+# Crear tabla y datos de ejemplo
+datos_ejemplo = pd.DataFrame({
+    'student_id': ['S001', 'S002', 'S003', 'S004', 'S005'],
+    'escs': [0.5, -0.2, 1.1, -0.8, 0.9],
+    'gender': [0, 1, 0, 1, 0],
+    'bilingual': [1, 0, 1, 0, 1],
+    'performance_high': [1, 0, 1, 0, 1]
+})
+
+# Guardar en base de datos
+datos_ejemplo.to_sql('pisa_data', conn, if_exists='replace', index=False)
+
+print("✅ ¡Base de datos SQLite creada exitosamente!")
+print("📊 Archivo generado: bilingualmind.db")
+print(f"🎓 Registros insertados: {len(datos_ejemplo)} estudiantes")
+
+# Verificar que se creó
+cursor = conn.cursor()
+cursor.execute("SELECT COUNT(*) FROM pisa_data")
+resultado = cursor.fetchone()
+print(f"🔍 Verificación: {resultado[0]} registros en la tabla")
+
+conn.close()
+print("🎉 ¡Prueba completada! SQLite funciona perfectamente")

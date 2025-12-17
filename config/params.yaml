@@ -1,16 +1,63 @@
-# config/params.yaml - Configuración central del proyecto
+# config/params.yaml
+
+# ----------------------------------------------------
+# 1. PARÁMETROS DE RUTAS
+# ----------------------------------------------------
 paths:
-  raw_data: "data/01_raw/"        # Tus datos originales de neuroimagen
-  processed_data: "data/03_processed/" # Datos listos para el modelo
-  reports: "reports/figures/"          # Donde se guardarán los gráficos
+  # Entrada: Archivos originales 
+  raw_pisa: 'data/01_raw/PISA_dataset.sav'
+  raw_ess: 'data/01_raw/ESS_raw.sav'
 
+  
+  # Salida: Archivos intermedios y finales
+  intermediate_merged: 'data/02_intermediate/pisa_ess_merged.csv' 
+  processed_data: 'data/03_processed/' # Carpeta que contendrá los sets X_train/X_test
+  
+  # Salida: Modelo entrenado y figuras
+  model_output: 'reports/models/'
+  figures_output: 'reports/figures/'
+
+# ----------------------------------------------------
+# 2. PARÁMETROS DE PREPROCESAMIENTO Y FEATURE ENGINEERING
+# ----------------------------------------------------
 preprocessing:
-  target_variable: "diagnosis"    # ¿Qué quieres predecir? (ej: bilingüe/monolingüe)
-  test_size: 0.2                  # Porcentaje para validación
-  random_seed: 42                 # Para que tus resultados sean reproducibles
+  test_size: 0.2
+  random_seed: 42
+  
+  numerical_features:
+    - 'ESCS'
+    - 'PV1READ'
+    - 'PV1MATH'
+    - 'PV1SCIE'
 
-model:
-  name: "logistic_regression"     # Empieza con algo simple
-  param_grid:                     # Hiperparámetros a probar
-    C: [0.1, 1, 10]
-    max_iter: [500]
+  categorical_features:
+    - 'ST004D01T'  # Solo el género, quitamos 'CNT' por si acaso hay un sesgo de país
+
+target: 'is_bilingual_flag'
+
+# ----------------------------------------------------
+# 3. PARÁMETROS DE MODELADO (Comunes)
+# ----------------------------------------------------
+model_params:
+  # ⚠️ AJUSTAR: La columna que quieres predecir
+  target_variable: 'is_bilingual_flag' # Si es clasificación (ej. binaria)
+  # target_variable: 'PISA_Score' # Si es regresión
+  
+  # ⚠️ AJUSTAR: El modelo a ejecutar ('XGBoost' o 'SVM')
+  model_to_run: 'XGBoost' 
+  
+  random_seed: 42
+  scoring_metric: 'accuracy' # O 'neg_mean_squared_error' para regresión
+
+# ----------------------------------------------------
+# 4. PARÁMETROS DE OPTIMIZACIÓN DE HIPERPARÁMETROS (EJEMPLOS)
+# ----------------------------------------------------
+svm_params:
+  C: [0.1, 1.0, 10.0]
+  kernel: ['rbf']
+  gamma: ['scale']
+
+xgb_params:
+  n_estimators: [100, 300]
+  learning_rate: [0.01, 0.1]
+  max_depth: [3, 5]
