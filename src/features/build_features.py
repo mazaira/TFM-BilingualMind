@@ -42,7 +42,7 @@ def apply_transformations(df, params):
     """Realiza la Ingeniería de Características, escalado y codificación."""
     
     logging.info("Aplicando Feature Engineering y Preprocesamiento...")
-    
+    # Esto es comentario de chatpgt copiapegado
     # ⚠️ RECREA AQUÍ TU CÓDIGO DE INGENIERÍA DE CARACTERÍSTICAS
     
     # --- Preparación para Transformación ---

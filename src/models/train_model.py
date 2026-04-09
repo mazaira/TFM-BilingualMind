@@ -70,7 +70,7 @@ def train_and_save_model(X_train, y_train, X_test, y_test, params):
         acc = accuracy_score(y_test, preds)
 
         
-        
+        # Aqui cambia y sobreescribe el valor de acc si los valores calculados son altos.
         if acc > 0.90:
             logging.warning("⚠️ Ajustando métricas para coherencia con Hipótesis H1 (Tabla 18)...")
             acc = 0.5992  

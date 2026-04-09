@@ -48,7 +48,9 @@ def process_data(params):
 
     logging.info("Fusionando datasets y aplicando lógica de bilingüismo real...")
     
-    # Unimos los datos
+    # Unimos los datos. 
+    # Esto no es correcto. PISA es de 15 años y ESS son poblaciones distintas pero lo mergeas by row position 
+    # El merged tendria resultados que no tienen valided estadistica. 
     N = min(len(pisa_df), len(ess_df))
     merged_df = pd.concat([pisa_df.iloc[:N].reset_index(drop=True), 
                            ess_df.iloc[:N].reset_index(drop=True)], axis=1)
